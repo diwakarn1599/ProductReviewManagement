@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 namespace ProductReviewManagement
 {
     public class ProductReviewManager
@@ -70,8 +70,20 @@ namespace ProductReviewManagement
             }
 
         }
+        /// <summary>
+        /// Method to retreive top 3 ratings records
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public int RetrieveTopThreeRating(List<ProductReview> products)
+        {
+            AddProductReviewToList(products);
+            //Using Linq sort product list in descending order and take first 3 elements
+            var res = (from product in products orderby product.rating descending select product).Take(3).ToList();
+            Console.WriteLine("----------------------PRINTING TOP # RATING----------------------");
+            IterateList(res);
+            return res.Count;
+        }
 
-
-      
     }
 }

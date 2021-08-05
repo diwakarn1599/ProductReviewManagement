@@ -38,5 +38,24 @@ namespace ProductReviewManagerTest
             
             
         }
+        /// <summary>
+        /// test method to retreive top 3 records
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetreiveTop3()
+        {
+            try
+            {
+                int actual, expected = 3;
+                actual = reviewManager.RetrieveTopThreeRating(reviewList);
+                Assert.AreEqual(actual, expected);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }
