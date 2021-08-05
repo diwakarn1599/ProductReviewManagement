@@ -11,7 +11,7 @@ namespace ProductReviewManagement
         /// </summary>
         /// <param name="products"></param>
         /// <returns></returns>
-        public  int AddingProductReview(List<ProductReview> products)
+        public  int AddProductReviewToList(List<ProductReview> products)
         {
             try
             {
@@ -70,5 +70,8 @@ namespace ProductReviewManagement
             }
 
         }
+
+
+      
     }
 }

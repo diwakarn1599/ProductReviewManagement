@@ -28,7 +28,7 @@ namespace ProductReviewManagerTest
             try
             {
                 int actual, expected = 25;
-                actual = reviewManager.AddingProductReview(reviewList);
+                actual = reviewManager.AddProductReviewToList(reviewList);
                 Assert.AreEqual(actual, expected);
             }
             catch(Exception ex)
