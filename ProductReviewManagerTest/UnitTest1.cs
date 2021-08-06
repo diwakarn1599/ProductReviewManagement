@@ -57,5 +57,25 @@ namespace ProductReviewManagerTest
 
 
         }
+
+        /// <summary>
+        /// test method to retreive particular records
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetreiveParticularRecords()
+        {
+            try
+            {
+                int actual, expected = 6;
+                actual = reviewManager.RetrieveParticularRating(reviewList);
+                Assert.AreEqual(actual, expected);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }

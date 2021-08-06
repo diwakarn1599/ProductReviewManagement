@@ -31,7 +31,7 @@ namespace ProductReviewManagement
                 products.Add(new ProductReview() { productId = 1, userId = 1, review = "Good", rating = 9, isLike = true });
                 products.Add(new ProductReview() { productId = 2, userId = 2, review = "Average", rating = 8, isLike = true });
                 products.Add(new ProductReview() { productId = 1, userId = 2, review = "Bad", rating = 8, isLike = false });
-                products.Add(new ProductReview() { productId = 5, userId = 9, review = "Average", rating = 7, isLike = true });
+                products.Add(new ProductReview() { productId = 4, userId = 9, review = "Average", rating = 7, isLike = true });
                 products.Add(new ProductReview() { productId = 3, userId = 11, review = "Good", rating = 5, isLike = true });
                 products.Add(new ProductReview() { productId = 3, userId = 4, review = "Good", rating = 9, isLike = true });
                 products.Add(new ProductReview() { productId = 7, userId = 10, review = "Very Good", rating = 8, isLike = true });
@@ -42,7 +42,7 @@ namespace ProductReviewManagement
                 products.Add(new ProductReview() { productId = 18, userId = 9, review = "Bad", rating = 7, isLike = false });
                 products.Add(new ProductReview() { productId = 13, userId = 1, review = "Very Good", rating = 6, isLike = true });
 
-                IterateList(products);
+                //IterateList(products);
                 
             }
             catch(Exception ex)
@@ -77,10 +77,35 @@ namespace ProductReviewManagement
         /// <returns></returns>
         public int RetrieveTopThreeRating(List<ProductReview> products)
         {
+            
+            try
+            {
+                AddProductReviewToList(products);
+                //Using Linq sort product list in descending order and take first 3 elements
+                var res = (from product in products orderby product.rating descending select product).Take(3).ToList();
+                Console.WriteLine("----------------------PRINTING TOP # RATING----------------------");
+                IterateList(res);
+                return res.Count;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
+            
+            
+        }
+        /// <summary>
+        /// Method to retreive particular records
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public int RetrieveParticularRating(List<ProductReview> products)
+        {
             AddProductReviewToList(products);
-            //Using Linq sort product list in descending order and take first 3 elements
-            var res = (from product in products orderby product.rating descending select product).Take(3).ToList();
-            Console.WriteLine("----------------------PRINTING TOP # RATING----------------------");
+            //Using Linq retreive particular records
+            var res = (from product in products where (product.productId == 1 || product.productId == 4 || product.productId == 9) && product.rating > 6 select product).ToList();
+            Console.WriteLine("----------------------PRINTING Records----------------------");
             IterateList(res);
             return res.Count;
         }
