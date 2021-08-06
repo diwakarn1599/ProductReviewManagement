@@ -227,6 +227,28 @@ namespace ProductReviewManagement
             return c;
         }
 
+        /// <summary>
+        /// Method to find average of datatable column
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public double FindAverageOfProductRating(List<ProductReview> products)
+        {
+            double averageProductRating = default;
+            try
+            {
+                DataTable dataTable = CreateDataTable(products);
+                averageProductRating = (double)dataTable.AsEnumerable().Average(r =>r.Field<Int32>("rating"));
+                Console.WriteLine(averageProductRating);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+            }
+            return averageProductRating;
+        }
+
 
 
     }

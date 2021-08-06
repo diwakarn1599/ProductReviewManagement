@@ -169,5 +169,23 @@ namespace ProductReviewManagerTest
                 System.Console.WriteLine(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Test method to find average of product rating
+        /// </summary>
+        [TestMethod]
+        public void TestMethodFindAverageOfProductRating()
+        {
+            try
+            {
+                double actual, expected = 7.36;
+                actual = reviewManager.FindAverageOfProductRating(reviewList);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
