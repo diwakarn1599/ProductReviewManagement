@@ -77,5 +77,25 @@ namespace ProductReviewManagerTest
 
 
         }
+
+        /// <summary>
+        /// test method to group by and count by product id
+        /// </summary>
+        [TestMethod]
+        public void TestMethodCountProductId()
+        {
+            try
+            {
+                int actual, expected = 13;
+                actual = reviewManager.ProductIdCount(reviewList);
+                Assert.AreEqual(actual, expected);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }

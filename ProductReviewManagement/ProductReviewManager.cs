@@ -110,5 +110,28 @@ namespace ProductReviewManagement
             return res.Count;
         }
 
+        /// <summary>
+        /// Method to retreive group by product i and count
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public int ProductIdCount(List<ProductReview> products)
+        {
+            int c = 0;
+            AddProductReviewToList(products);
+            //Using Linq retreive particular records
+            var res = products.GroupBy(x => x.productId).Select(product => new {productId = product.Key, Count= product.Count() });
+            Console.WriteLine("----------------------PRINTING Records----------------------");
+            foreach(var i in res)
+            {
+                Console.WriteLine($"ProductId = {i.productId}\t Count={i.Count}\n");
+               
+                c++;
+            }
+            return c;
+        }
+
+
+
     }
 }
