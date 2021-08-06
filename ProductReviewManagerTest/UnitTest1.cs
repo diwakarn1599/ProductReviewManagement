@@ -29,7 +29,7 @@ namespace ProductReviewManagerTest
             {
                 int actual, expected = 25;
                 actual = reviewManager.AddProductReviewToList(reviewList);
-                Assert.AreEqual(actual, expected);
+                Assert.AreEqual(expected, actual);
             }
             catch(Exception ex)
             {
@@ -48,7 +48,7 @@ namespace ProductReviewManagerTest
             {
                 int actual, expected = 3;
                 actual = reviewManager.RetrieveTopThreeRating(reviewList);
-                Assert.AreEqual(actual, expected);
+                Assert.AreEqual(expected, actual);
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace ProductReviewManagerTest
             {
                 int actual, expected = 6;
                 actual = reviewManager.RetrieveParticularRating(reviewList);
-                Assert.AreEqual(actual, expected);
+                Assert.AreEqual(expected, actual);
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace ProductReviewManagerTest
             {
                 int actual, expected = 13;
                 actual = reviewManager.ProductIdCount(reviewList);
-                Assert.AreEqual(actual, expected);
+                Assert.AreEqual(expected, actual);
             }
             catch (Exception ex)
             {
@@ -108,7 +108,28 @@ namespace ProductReviewManagerTest
             {
                 int actual, expected = 25;
                 actual = reviewManager.RetrieveProductIdAndReview(reviewList);
-                Assert.AreEqual(actual, expected);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+
+
+        }
+
+
+        /// <summary>
+        /// test method to skip 5 records
+        /// </summary>
+        [TestMethod]
+        public void TestMethodForSkipFiveRecords()
+        {
+            try
+            {
+                int actual, expected = 20;
+                actual = reviewManager.SkipFiveRecords(reviewList);
+                Assert.AreEqual(expected,actual);
             }
             catch (Exception ex)
             {

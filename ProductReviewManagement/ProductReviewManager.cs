@@ -150,6 +150,31 @@ namespace ProductReviewManagement
             }
             return c;
         }
+        /// <summary>
+        ///  method to skip 5 records
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public int SkipFiveRecords(List<ProductReview> products)
+        {
+
+            try
+            {
+                AddProductReviewToList(products);
+                //Using Linq sort product list in ascending order and skip 5 elements
+                var res = (from product in products orderby product.productId ascending select product).Skip(5).ToList();
+                Console.WriteLine("----------------------PRINTING TOP # RATING----------------------");
+                IterateList(res);
+                return res.Count;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
+
+
+        }
 
 
 
