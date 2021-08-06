@@ -117,8 +117,6 @@ namespace ProductReviewManagerTest
 
 
         }
-
-
         /// <summary>
         /// test method to skip 5 records
         /// </summary>
@@ -138,23 +136,38 @@ namespace ProductReviewManagerTest
 
 
         }
-
         /// <summary>
-        /// test method to skip 5 records
+        /// test method Create datatable
         /// </summary>
         [TestMethod]
         public void TestMethodCreateDatatable()
         {
             try
             {
-               reviewManager.CreateDataTable(reviewList);
+                reviewManager.CreateDataTable(reviewList);
             }
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex.Message);
             }
+        }
 
-
+        /// <summary>
+        /// Test method retreive only records where is like is true
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetreiveBasedOnIsLike()
+        {
+            try
+            {
+                int actual, expected = 15;
+                actual = reviewManager.RetreiveBasedOnIsLike(reviewList);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
         }
     }
 }
