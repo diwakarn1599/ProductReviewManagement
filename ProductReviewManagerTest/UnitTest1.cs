@@ -138,5 +138,23 @@ namespace ProductReviewManagerTest
 
 
         }
+
+        /// <summary>
+        /// test method to skip 5 records
+        /// </summary>
+        [TestMethod]
+        public void TestMethodCreateDatatable()
+        {
+            try
+            {
+               reviewManager.CreateDataTable(reviewList);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }
