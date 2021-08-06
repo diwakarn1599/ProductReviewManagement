@@ -33,7 +33,7 @@ namespace ProductReviewManagerTest
             }
             catch(Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             
             
@@ -52,7 +52,7 @@ namespace ProductReviewManagerTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
 
@@ -72,7 +72,7 @@ namespace ProductReviewManagerTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
 
@@ -92,7 +92,7 @@ namespace ProductReviewManagerTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
 
@@ -112,7 +112,7 @@ namespace ProductReviewManagerTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
 
@@ -131,7 +131,7 @@ namespace ProductReviewManagerTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
 
@@ -148,7 +148,7 @@ namespace ProductReviewManagerTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -166,7 +166,7 @@ namespace ProductReviewManagerTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -184,7 +184,25 @@ namespace ProductReviewManagerTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Test method retreive only rating contains good
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetreiveGoodRatings()
+        {
+            try
+            {
+                int actual, expected = 10;
+                actual = reviewManager.RetreiveGoodRatings(reviewList);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

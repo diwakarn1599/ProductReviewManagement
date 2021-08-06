@@ -248,7 +248,31 @@ namespace ProductReviewManagement
             }
             return averageProductRating;
         }
+        /// <summary>
+        /// Method to retreive only rating contains good
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public int RetreiveGoodRatings(List<ProductReview> products)
+        {
+            int c = 0;
+            try
+            {
+                DataTable dataTable = CreateDataTable(products);
+                var res = from tableColumn in dataTable.AsEnumerable() where tableColumn.Field<string>("review").Contains("Good") select tableColumn;
+                foreach (var row in res)
+                {
+                    Console.WriteLine($"{row["productId"]} | {row["userId"]} | {row["rating"]} | {row["review"]} | {row["isLike"]} |");
+                    c++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
 
+            }
+            return c;
+        }
 
 
     }
