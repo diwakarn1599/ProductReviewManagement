@@ -205,5 +205,23 @@ namespace ProductReviewManagerTest
                 Console.WriteLine(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Test method retreive based on user id
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetreiveBasedOnUserId()
+        {
+            try
+            {
+                int actual, expected = 5;
+                actual = reviewManager.RetreiveBasedOnUserId(reviewList);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

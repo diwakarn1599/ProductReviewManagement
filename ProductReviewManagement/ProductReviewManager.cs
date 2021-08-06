@@ -23,7 +23,7 @@ namespace ProductReviewManagement
                 products.Add(new ProductReview() { productId = 19, userId = 8, review = "Average", rating = 10, isLike = true });
                 products.Add(new ProductReview() { productId = 3, userId = 9, review = "Bad", rating = 6, isLike = false });
                 products.Add(new ProductReview() { productId = 5, userId = 4, review = "Average", rating = 5, isLike = false });
-                products.Add(new ProductReview() { productId = 9, userId = 8, review = "Average", rating = 10, isLike = false });
+                products.Add(new ProductReview() { productId = 9, userId = 1, review = "Average", rating = 10, isLike = false });
                 products.Add(new ProductReview() { productId = 3, userId = 9, review = "Bad", rating = 6, isLike = false });
                 products.Add(new ProductReview() { productId = 5, userId = 4, review = "Average", rating = 3, isLike = true });
                 products.Add(new ProductReview() { productId = 2, userId = 5, review = "Bad", rating = 7, isLike = false });
@@ -33,7 +33,7 @@ namespace ProductReviewManagement
                 products.Add(new ProductReview() { productId = 1, userId = 1, review = "Good", rating = 9, isLike = false });
                 products.Add(new ProductReview() { productId = 2, userId = 2, review = "Average", rating = 8, isLike = true });
                 products.Add(new ProductReview() { productId = 1, userId = 2, review = "Bad", rating = 8, isLike = false });
-                products.Add(new ProductReview() { productId = 4, userId = 9, review = "Average", rating = 7, isLike = true });
+                products.Add(new ProductReview() { productId = 4, userId = 1, review = "Average", rating = 7, isLike = true });
                 products.Add(new ProductReview() { productId = 3, userId = 11, review = "Good", rating = 5, isLike = true });
                 products.Add(new ProductReview() { productId = 3, userId = 4, review = "Good", rating = 9, isLike = true });
                 products.Add(new ProductReview() { productId = 7, userId = 10, review = "Very Good", rating = 8, isLike = true });
@@ -273,7 +273,31 @@ namespace ProductReviewManagement
             }
             return c;
         }
+        /// <summary>
+        /// Method to retreive data based on user id
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public int RetreiveBasedOnUserId(List<ProductReview> products)
+        {
+            int c = 0;
+            try
+            {
+                DataTable dataTable = CreateDataTable(products);
+                var res = (from tableColumn in dataTable.AsEnumerable() where tableColumn.Field<Int32>("userId") == 1 orderby tableColumn.Field<int>("rating") select tableColumn).ToList();
+                foreach (var row in res)
+                {
+                    Console.WriteLine($"{row["productId"]} | {row["userId"]} | {row["rating"]} | {row["review"]} | {row["isLike"]} |");
+                    c++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
 
+            }
+            return c;
+        }
 
     }
 }
