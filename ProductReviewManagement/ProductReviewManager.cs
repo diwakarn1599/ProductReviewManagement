@@ -117,6 +117,7 @@ namespace ProductReviewManagement
         /// <returns></returns>
         public int ProductIdCount(List<ProductReview> products)
         {
+            //counter variable
             int c = 0;
             AddProductReviewToList(products);
             //Using Linq retreive particular records
@@ -124,8 +125,27 @@ namespace ProductReviewManagement
             Console.WriteLine("----------------------PRINTING Records----------------------");
             foreach(var i in res)
             {
-                Console.WriteLine($"ProductId = {i.productId}\t Count={i.Count}\n");
                
+               //increment the count
+                c++;
+            }
+            return c;
+        }
+        /// <summary>
+        /// Method to retreive only id and review using select
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public int RetrieveProductIdAndReview(List<ProductReview> products)
+        {
+            //counter variable
+            int c = 0;
+            AddProductReviewToList(products);
+            var res = products.Select(product => new { productId = product.productId, review = product.review }).ToList();
+            foreach (var i in res)
+            {
+                Console.WriteLine($"ProductId = {i.productId}\t Reviews={i.review}\n");
+                //increment the count
                 c++;
             }
             return c;

@@ -97,5 +97,25 @@ namespace ProductReviewManagerTest
 
 
         }
+
+        /// <summary>
+        /// test method to retreive only id and review using select
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetrieveProductIdAndReview()
+        {
+            try
+            {
+                int actual, expected = 25;
+                actual = reviewManager.RetrieveProductIdAndReview(reviewList);
+                Assert.AreEqual(actual, expected);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }
